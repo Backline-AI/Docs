@@ -1,0 +1,18 @@
+name: Spellcheck
+
+on:
+  pull_request:
+    paths:
+      - '**/*.md'    # Check only Markdown files
+      - '**/*.txt'   # (Optional) Check .txt files
+
+jobs:
+  spellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run check-spelling
+        uses: check-spelling/check-spelling@v0.0.25    # use latest version from their repo
+        with:
+          check_file_names: 1         # Also checks file names for typos
